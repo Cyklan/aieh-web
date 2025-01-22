@@ -1,0 +1,82 @@
+---
+import { Image } from "astro:assets";
+import Headline from "./generic/Headline.astro";
+import Stack from "./generic/Stack.astro";
+import WithSidebar from "./generic/WithSidebar.astro";
+import softwareImage from "../assets/software-screenshot-1.png";
+import Text from "./generic/Text.astro";
+
+type Props = {
+  flipped?: boolean;
+};
+---
+
+<div id="software">
+  <Stack>
+    <Headline centered level={2}>The Software</Headline>
+    <WithSidebar>
+      <div class="img-container">
+        <Image alt="the software" src={softwareImage} />
+      </div>
+      <Stack>
+        <Headline level={3}>Reno-Tool</Headline>
+        <Text size={2}>
+          Hier steht jetzt der absolute ober-scheiß über das Reno-Tool. Das Ding
+          ist SO geil, da kann man eigentlich gar nicht anders, als das zu
+          kaufen
+        </Text>
+      </Stack>
+    </WithSidebar>
+    <WithSidebar flipped>
+      <div class="img-container flipped">
+        <Image alt="the software 2" src={softwareImage} />
+      </div>
+      <Stack>
+        <div class="spacer"></div>
+        <Headline level={3}>Capex-Tool</Headline>
+        <Text size={2}>
+          Und hier steht jetzt, warum das Capex-Tool das absolut geilste ist,
+          was je erfunden wurde. Literally, das ding ist geiler als geschnitten
+          Brot.
+        </Text>
+      </Stack>
+    </WithSidebar>
+  </Stack>
+</div>
+
+<style>
+  .spacer {
+    margin-top: var(--space-2xl);
+  }
+  .img-container {
+    perspective: 2000px;
+    max-width: fit-content;
+    transform-style: preserve-3d;
+    --flip-modifier: 1;
+    &.flipped {
+      --flip-modifier: -1;
+
+      img {
+        animation-delay: 5s;
+      }
+    }
+  }
+  img {
+    width: 500px;
+    height: 300px;
+    object-fit: contain;
+    transform: rotateX(7deg) rotateY(calc(25deg * var(--flip-modifier)))
+      rotateZ(calc(-7deg * var(--flip-modifier)));
+    filter: drop-shadow(5px 70px 46px #d9d9d9);
+    animation: MoveUpDown 10s ease-in-out infinite;
+  }
+  @keyframes MoveUpDown {
+    0%,
+    100% {
+      translate: 0 0;
+    }
+    50% {
+      translate: 0 10px;
+    }
+  }
+</style>

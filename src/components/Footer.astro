@@ -1,0 +1,56 @@
+---
+import Text from "./generic/Text.astro";
+import { Year } from "./Year";
+import Logo from "../assets/icons/logo.svg?raw";
+import Stack from "./generic/Stack.astro";
+---
+
+<footer>
+  <div class="content">
+    <Fragment set:html={Logo} />
+    <Stack small>
+      <a href="/imprint"><Text onDarkBackground size={1}>Impressum</Text></a>
+      <a href="/datenschutz"
+        ><Text onDarkBackground size={1}>Datenschutz</Text></a
+      >
+    </Stack>
+    <Text onDarkBackground size={1}>
+      © <span id="year"></span> AI Estate Hub
+    </Text>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year")!.innerHTML = new Date()
+    .getFullYear()
+    .toString();
+</script>
+
+<style>
+  footer {
+    margin-block-start: var(--space-2xl);
+    height: 150px;
+    background: var(--accent);
+    display: grid;
+    place-items: center;
+    clip-path: ellipse(max(75vh, 125vw) 100% at 50% 100%);
+
+    a {
+      text-decoration: none;
+      display: block;
+    }
+
+    .content {
+      width: 100%;
+      max-width: 1120px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    svg {
+      width: 95px;
+      height: 45px;
+    }
+  }
+</style>

@@ -1,0 +1,42 @@
+---
+import { getLanguage } from "../i18n/getLanguage";
+import { useTranslations } from "../i18n/translate";
+import Advantages from "./Advantages.astro";
+import Features from "./Features.astro";
+import Icon from "./generic/Icon.astro";
+import Stack from "./generic/Stack.astro";
+import Hero from "./Hero.astro";
+import Software from "./Software.astro";
+
+const lang = getLanguage(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Hero
+  tagLine={t("hero.body")}
+  imageText={t("hero.img")}
+  buttonText={t("hero.book_demo")}
+>
+  {t("hero.headline")}{" "}
+  <Icon size="small" icon="rocket" color="secondary" />
+</Hero>
+<div id="main">
+  <Stack large>
+    <Features />
+    <Software />
+    <Advantages />
+  </Stack>
+</div>
+
+<style>
+  #main {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1120px;
+  }
+
+  :global(.icon.rocket svg) {
+    rotate: 30deg;
+    transform: translateY(5px);
+  }
+</style>

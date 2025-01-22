@@ -1,4 +1,5 @@
 ---
+import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
 ---
 
@@ -7,14 +8,15 @@ import Nav from "../components/Nav.astro";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
     <link rel="stylesheet" href="/global.css" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro Basics</title>
+    <title>AI Estate Hub</title>
   </head>
   <body>
     <slot />
     <div class="nnnoise"></div>
+    <Footer />
   </body>
 </html>
 

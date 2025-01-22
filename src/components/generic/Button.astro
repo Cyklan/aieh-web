@@ -6,8 +6,6 @@ type Props = {
   variant?: "primary" | "secondary";
 };
 
-console.log(Astro.props);
-
 const { href, children, variant = "primary", onClick } = Astro.props;
 const id = crypto.randomUUID();
 ---

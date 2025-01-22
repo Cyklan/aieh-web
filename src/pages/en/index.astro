@@ -1,46 +1,8 @@
 ---
-import Advantages from "../../components/Advantages.astro";
-import Features from "../../components/Features.astro";
-import Headline from "../../components/generic/Headline.astro";
-import Icon from "../../components/generic/Icon.astro";
-import Stack from "../../components/generic/Stack.astro";
-import Hero from "../../components/Hero.astro";
+import Content from "../../components/Content.astro";
 import Layout from "../../layouts/Layout.astro";
 ---
 
 <Layout>
-  <Hero
-    tagLine="Cross-functional solutions for Asset Management, ESG & Sustainability, Project Management & Development."
-    imageText="End-to-end real estate solutions for every stage of the property lifecycle"
-    buttonText="Book a demo"
-  >
-    Real Estate Analysis powered by AI <Icon
-      size="small"
-      icon="rocket"
-      color="secondary"
-    />
-  </Hero>
-  <div id="main">
-    <Stack large>
-      <Features />
-      <Advantages />
-    </Stack>
-  </div>
-  <div id="main" class="test"></div>
+  <Content />
 </Layout>
-
-<style>
-  #main {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 1120px;
-  }
-  .test {
-    height: 300vh;
-  }
-
-  :global(.icon.rocket svg) {
-    rotate: 30deg;
-    transform: translateY(5px);
-  }
-</style>

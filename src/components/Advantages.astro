@@ -4,14 +4,26 @@ import Headline from "./generic/Headline.astro";
 import Stack from "./generic/Stack.astro";
 import Blob from "../assets/blob.svg?raw";
 import { Fragment } from "astro/jsx-runtime";
+// image: https://www.shutterstock.com/de/image-photo/successful-business-people-giving-each-other-2237853093
+import partnershipImage from "../assets/partnership.jpg";
+//www.shutterstock.com/de/image-photo/digital-transformation-concept-system-engineering-binary-1975936445
+import aiImage from "../assets/ai-knowledge.jpg";
+import { getLanguage } from "../i18n/getLanguage";
+import { useTranslations } from "../i18n/translate";
+const language = getLanguage(Astro.url);
+const t = useTranslations(language);
 ---
 
 <div id="advantages">
   <Stack>
-    <Headline centered level={2}>Advantages at a glance</Headline>
+    <Headline centered level={2}>{t("advantage.headline")}</Headline>
     <div class="advantage-list">
-      <Advantage img="partnership" />
-      <Advantage img="partnership" />
+      <Advantage headline={t("advantage.head_one")} image={partnershipImage}>
+        {t("advantage.body_one")}
+      </Advantage>
+      <Advantage headline={t("advantage.head_two")} image={aiImage}>
+        {t("advantage.body_two")}
+      </Advantage>
       <Fragment set:html={Blob} />
       <Fragment set:html={Blob} />
       <Fragment set:html={Blob} />
@@ -24,6 +36,19 @@ import { Fragment } from "astro/jsx-runtime";
     display: flex;
     gap: var(--space-m);
     position: relative;
+
+    svg {
+      display: none;
+
+      @media (min-width: 1120px) {
+        display: block;
+        scale: 0.7;
+      }
+
+      @media (min-width: 1280px) {
+        scale: 1;
+      }
+    }
 
     svg:nth-of-type(1) {
       position: absolute;

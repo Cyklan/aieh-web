@@ -3,42 +3,34 @@ import Card from "./generic/Card.astro";
 import Text from "./generic/Text.astro";
 import Headline from "./generic/Headline.astro";
 import Stack from "./generic/Stack.astro";
+import { getLanguage } from "../i18n/getLanguage";
+import { useTranslations } from "../i18n/translate";
+
+const lang = getLanguage(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <div id="features">
   <Stack>
-    <Headline centered level={2}>Easy-to-deploy AI Solutions</Headline>
+    <Headline centered level={2}>{t("feat.headline")}</Headline>
 
     <div class="card-grid">
-      <Card icon="brush" headline="Renovation">
-        <Text onDarkBackground size={2}
-          >Reno Solutions streamlines renovation projects with efficient
-          planning, execution, and billing. Minimize vacancies and boost
-          portfolio performance with 360° tours and digital documentation.</Text
-        >
+      <Card icon="brush" headline={t("feat.head_one")}>
+        <Text onDarkBackground size={2}>{t("feat.body_one")}</Text>
       </Card>
-      <Card icon="building" headline="Capex">
+      <Card icon="building" headline={t("feat.head_two")}>
         <Text onDarkBackground size={2}>
-          CapEx Solutions empowers asset managers and developers with precise
-          five-year Capex planning and management. Optimize investments with
-          automated workflows and real-time financial control from start to
-          finish.
+          {t("feat.body_two")}
         </Text>
       </Card>
-      <Card icon="document" headline="Documents">
+      <Card icon="document" headline={t("feat.head_three")}>
         <Text onDarkBackground size={2}>
-          Our Content-Collaboration Platform boosts teamwork with secure,
-          centralized access to files, real-time collaboration, and efficient
-          organization. This ensures seamless workflows and maximum productivity
-          for all teams and partners.
+          {t("feat.body_three")}
         </Text>
       </Card>
-      <Card icon="zap" headline="Artifical Intelligence">
+      <Card icon="zap" headline={t("feat.head_four")}>
         <Text onDarkBackground size={2}>
-          Query your data for insightful business decisions. Access top AI
-          models: Mistral, Llama, LocalMind, plus integrate ChatGPT, Claude, or
-          Gemini. All solutions are GDPR-compliant and available in our German
-          data center or on-premise.
+          {t("feat.body_four")}
         </Text>
       </Card>
     </div>
