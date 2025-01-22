@@ -1,0 +1,84 @@
+---
+import { Fragment } from "astro/jsx-runtime";
+import ArrowDown from "../../assets/icons/arrow_down.svg?raw";
+import Rocket from "../../assets/icons/rocket.svg?raw";
+import Building from "../../assets/icons/building.svg?raw";
+import Brush from "../../assets/icons/brush.svg?raw";
+import Document from "../../assets/icons/document.svg?raw";
+import Zap from "../../assets/icons/zap.svg?raw";
+
+type Props = {
+  icon: string;
+  color?: "primary" | "secondary";
+  size?: "small" | "regular" | "big";
+  class?: string;
+};
+const {
+  icon,
+  color = "primary",
+  size = "regular",
+  class: classes,
+} = Astro.props;
+let svg = "";
+
+switch (icon) {
+  case "arrow_down":
+    svg = ArrowDown;
+    break;
+  case "rocket":
+    svg = Rocket;
+    break;
+  case "building":
+    svg = Building;
+    break;
+  case "brush":
+    svg = Brush;
+    break;
+  case "zap":
+    svg = Zap;
+    break;
+  case "document":
+    svg = Document;
+    break;
+}
+---
+
+<span class:list={["icon", color, size, classes, icon]}>
+  <Fragment class:list={[color, size]} set:html={svg} />
+</span>
+
+<style is:global>
+  :root {
+    --icon-size-s: clamp(2.8125rem, 2.4864rem + 1.6304vw, 3.75rem);
+    --icon-size-m: clamp(4.5rem, 3.9783rem + 2.6087vw, 6rem);
+    --icon-size-l: clamp(9rem, 7.9565rem + 5.2174vw, 12rem);
+  }
+
+  .primary .tone-1 {
+    fill: var(--primary);
+  }
+  .primary .tone-2 {
+    fill: var(--primary-light);
+  }
+  .secondary .tone-1 {
+    fill: var(--secondary);
+  }
+  .secondary .tone-2 {
+    fill: var(--secondary-light);
+  }
+
+  .small svg {
+    width: var(--icon-size-s);
+    height: var(--icon-size-s);
+  }
+
+  .regular svg {
+    width: var(--icon-size-m);
+    height: var(--icon-size-m);
+  }
+
+  .big svg {
+    width: var(--icon-size-l);
+    height: var(--icon-size-l);
+  }
+</style>

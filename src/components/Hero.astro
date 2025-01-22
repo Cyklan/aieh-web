@@ -1,0 +1,199 @@
+---
+import Image from "astro/components/Image.astro";
+import Headline from "./generic/Headline.astro";
+import Icon from "./generic/Icon.astro";
+import Text from "./generic/Text.astro";
+// https://www.shutterstock.com/de/image-photo/aerial-drone-shot-building-construction-finished-2445633403
+import image from "../assets/hero.jpg";
+import Stack from "./generic/Stack.astro";
+import Button from "./generic/Button.astro";
+import Nav from "./Nav.astro";
+import Confetti2 from "../assets/confetti2.svg?raw";
+import { Fragment } from "astro/jsx-runtime";
+
+type Props = {
+  children?: any;
+  tagLine: string;
+  buttonText: string;
+  imageText: string;
+};
+
+const { tagLine, buttonText, imageText } = Astro.props;
+---
+
+<header>
+  <Nav />
+  <div class="hero-container">
+    <Stack>
+      <Headline onDarkBackground>
+        <slot />
+      </Headline>
+      <Text onDarkBackground>{tagLine} </Text>
+      <Button variant="secondary" href="#" children={buttonText} />
+    </Stack>
+    <div class="image-placeholder">
+      <figure>
+        <Fragment set:html={Confetti2} />
+        <Image
+          loading="eager"
+          class="hero-img"
+          src={image}
+          alt=""
+          width={1500}
+          height={890}
+        />
+        <figcaption>
+          <Text onDarkBackground size={1}>{imageText}</Text>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <a href="#main" aria-label="Scroll down action indicator">
+      <Icon icon="arrow_down" color="secondary" size="small" />
+    </a>
+  </div>
+</header>
+
+<style>
+  :root {
+    --caption-size: 140px;
+  }
+
+  header,
+  header::after {
+    clip-path: ellipse(max(75vh, 125vw) 100% at 50% 0%);
+    height: 95vh;
+  }
+  header {
+    position: relative;
+    background-color: var(--secondary-dark);
+    display: grid;
+    place-items: center;
+  }
+
+  header::after {
+    width: 100%;
+    position: absolute;
+    pointer-events: none;
+    content: "";
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.075),
+      transparent
+    );
+  }
+
+  .hero-container {
+    margin-block-start: 60px;
+    display: flex;
+    max-width: 1120px;
+    width: 100vw;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    gap: var(--space-m);
+    padding-inline: 1rem;
+
+    flex-direction: column;
+    align-items: center;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      margin-block-start: unset;
+    }
+  }
+
+  figure {
+    padding-inline-end: calc(var(--caption-size) / 2);
+    padding-block-end: calc(var(--caption-size) / 3);
+    position: relative;
+    max-width: calc(300px + calc(var(--caption-size) / 2));
+
+    @media (min-width: 1120px) {
+      max-width: calc(450px + calc(var(--caption-size) / 2));
+    }
+
+    svg {
+      position: absolute;
+      z-index: -1;
+      max-width: 100%;
+      top: -84px;
+      left: -31px;
+    }
+  }
+
+  figcaption {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: var(--caption-size);
+    aspect-ratio: 1 / 1;
+    border-radius: 99999px;
+    text-align: center;
+    backdrop-filter: blur(8px) contrast(0.8);
+    background-color: var(--primary-light-transparent);
+    display: grid;
+    place-items: center;
+    padding: 0.7rem;
+    box-shadow: 0 0 0 5px #0000001a;
+  }
+
+  .hero-img {
+    aspect-ratio: 4 / 3;
+    max-width: 300px;
+    height: auto;
+    object-fit: cover;
+    rotate: 1deg;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px #00000026;
+
+    @media (min-width: 768px) {
+      max-width: 300px;
+    }
+
+    @media (min-width: 1120px) {
+      max-width: 450px;
+    }
+  }
+
+  .image-placeholder {
+    flex: 1 1 400px;
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) scale(0.75);
+    animation: bounce 5s ease infinite;
+    animation-delay: 20s;
+  }
+
+  @media (prefers-reduced-motion) {
+    .scroll-indicator {
+      animation: none;
+    }
+  }
+
+  @keyframes bounce {
+    0%,
+    50%,
+    100% {
+      translate: 0;
+      scale: 1;
+    }
+
+    17.5% {
+      translate: 0 -15%;
+      scale: 1 0.8;
+    }
+
+    25%,
+    40% {
+      translate: 0 10%;
+      scale: 1 1.1;
+    }
+  }
+</style>

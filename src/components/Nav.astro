@@ -1,0 +1,27 @@
+---
+import { Fragment } from "astro/jsx-runtime";
+import Logo from "../assets/icons/logo.svg?raw";
+---
+
+<nav>
+  <Fragment set:html={Logo} />
+</nav>
+
+<style>
+  nav {
+    position: absolute;
+    top: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    max-width: 1120px;
+    padding-inline-start: .5rem;
+    width: 100vw;
+
+    svg {
+      width: 95px;
+      height: 45px;
+    }
+  }
+</style>

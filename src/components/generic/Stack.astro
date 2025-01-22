@@ -1,0 +1,26 @@
+---
+type Props = {
+  small?: boolean;
+  large?: boolean;
+};
+
+const { small, large } = Astro.props;
+---
+
+<div class:list={["stack", { small, large }]}>
+  <slot />
+</div>
+
+<style is:global>
+  .stack > * + * {
+    margin-block-start: 1.5rem;
+  }
+
+  .stack.small > * + * {
+    margin-block-start: .75rem;
+  }
+  
+  .stack.large > * + * {
+    margin-block-start: 3rem;
+  }
+</style>

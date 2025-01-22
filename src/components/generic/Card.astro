@@ -1,0 +1,62 @@
+---
+import Headline from "./Headline.astro";
+import Icon from "./Icon.astro";
+import Stack from "./Stack.astro";
+
+type Props = {
+  icon: string;
+  headline: string;
+  children?: any;
+};
+
+const { icon, headline } = Astro.props;
+---
+
+<div class:list={["card"]}>
+  <Stack small>
+    <Headline onDarkBackground level={4}>{headline}</Headline>
+    <slot />
+  </Stack>
+  <div class="icon-bubble">
+    <Icon color="secondary" icon={icon} />
+  </div>
+</div>
+
+<style>
+  .card {
+    padding: var(--space-m);
+    background-color: var(--primary);
+    position: relative;
+
+    height: 100%;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      scale: 1.03;
+      background-color: color-mix(in srgb, var(--primary) 80%, white 20%);
+    }
+
+    box-shadow: 0 6px 20px #00000026;
+  }
+
+  .icon-bubble {
+    width: var(--font-step-3);
+    height: var(--font-step-3);
+    background-color: var(--background);
+    position: absolute;
+    top: var(--space-m);
+    right: var(--space-m);
+
+    border-radius: 100000px;
+
+    box-shadow: 0 0 0 3px #0000001a;
+
+    svg {
+      margin-top: 5%;
+      margin-left: 5%;
+      max-width: 90%;
+      max-height: 90%;
+    }
+  }
+</style>

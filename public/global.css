@@ -1,0 +1,164 @@
+:root {
+  --primary-light-transparent: rgba(167, 192, 215, 0.8);
+  --primary-light: #a7c0d7;
+  --primary: #5786b3;
+  --primary-dark: #284058;
+
+  --secondary-light: #cacce7;
+  --secondary: #9c9fd2;
+  --secondary-dark: #383c7b;
+
+  --accent: #303b45;
+
+  --text: #070b0e;
+  --background: #fafbfd;
+
+  --font-step--2: clamp(0.7813rem, 0.7747rem + 0.0326vw, 0.8rem);
+  --font-step--1: clamp(0.9375rem, 0.9158rem + 0.1087vw, 1rem);
+  --font-step-0: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+  --font-step-1: clamp(1.35rem, 1.2761rem + 0.3696vw, 1.5625rem);
+  --font-step-2: clamp(1.62rem, 1.5041rem + 0.5793vw, 1.9531rem);
+  --font-step-3: clamp(1.944rem, 1.771rem + 0.8651vw, 2.4414rem);
+  --font-step-4: clamp(2.3328rem, 2.0827rem + 1.2504vw, 3.0518rem);
+  --font-step-5: clamp(2.7994rem, 2.4462rem + 1.7658vw, 3.8147rem);
+
+  --space-s: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+  --space-m: clamp(1.6875rem, 1.6223rem + 0.3261vw, 1.875rem);
+  --space-l: clamp(2.25rem, 2.163rem + 0.4348vw, 2.5rem);
+  --space-xl: clamp(3.375rem, 3.2446rem + 0.6522vw, 3.75rem);
+  --space-2xl: clamp(4.5rem, 4.3261rem + 0.8696vw, 5rem);
+}
+
+@font-face {
+  font-family: "Cantarell";
+  src: url("/fonts/cantarell.woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cantarell";
+  src: url("/fonts/cantarell-bold.woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cantarell";
+  src: url("/fonts/cantarell-italic.woff2");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cantarell";
+  src: url("/fonts/cantarell-bold-italic.woff2");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fjalla One";
+  src: url("/fonts/fjalla-one.woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* RESET */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  scroll-behavior: smooth;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 8ex;
+}

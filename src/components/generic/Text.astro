@@ -1,0 +1,78 @@
+---
+type Props = {
+  children: any;
+  element?: "p" | "span";
+  size?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
+  onDarkBackground?: boolean;
+};
+
+const { element = "p", size = 3, onDarkBackground } = Astro.props;
+---
+
+{
+  element === "p" ? (
+    <p class:list={{[`size-${size}`]: true, onDarkBackground}}>
+      <slot />
+    </p>
+  ) : (
+    <span class:list={{[`size-${size}`]: true, onDarkBackground}}>
+      <slot />
+    </span>
+  )
+}
+
+<style>
+  p,
+  span {
+    color: var(--text);
+    line-height: 1.1;
+    font-family:
+      Cantarell,
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      Oxygen,
+      Ubuntu,
+      "Open Sans",
+      "Helvetica Neue",
+      sans-serif;
+  }
+
+  .onDarkBackground {
+    color: var(--background);
+  }
+
+  .size-0 {
+    font-size: var(--font-step--2);
+  }
+
+  .size-1 {
+    font-size: var(--font-step--1);
+  }
+
+  .size-2 {
+    font-size: var(--font-step-0);
+  }
+
+  .size-3 {
+    font-size: var(--font-step-1);
+  }
+
+  .size-4 {
+    font-size: var(--font-step-2);
+  }
+
+  .size-5 {
+    font-size: var(--font-step-3);
+  }
+
+  .size-6 {
+    font-size: var(--font-step-4);
+  }
+
+  .size-7 {
+    font-size: var(--font-step-5);
+  }
+</style>

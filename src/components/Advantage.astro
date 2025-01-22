@@ -1,0 +1,31 @@
+---
+import { Image } from "astro:assets";
+// image: https://www.shutterstock.com/de/image-photo/successful-business-people-giving-each-other-2237853093
+import image from "../assets/partnership.jpg";
+import Headline from "./generic/Headline.astro";
+import Text from "./generic/Text.astro";
+import Stack from "./generic/Stack.astro";
+---
+
+<div class="advantage">
+  <Stack small>
+    <Image alt="Business People high fiving" src={image} />
+    <Headline level={4}>Collaborative Partnership</Headline>
+    <Text size={2}
+      >Some bogus text about how working with us is the greatest thing ever</Text
+    >
+  </Stack>
+</div>
+
+<style>
+  .advantage {
+    img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+  }
+</style>
+

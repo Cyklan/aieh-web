@@ -1,0 +1,67 @@
+---
+import Card from "./generic/Card.astro";
+import Text from "./generic/Text.astro";
+import Headline from "./generic/Headline.astro";
+import Stack from "./generic/Stack.astro";
+---
+
+<div id="features">
+  <Stack>
+    <Headline centered level={2}>Easy-to-deploy AI Solutions</Headline>
+
+    <div class="card-grid">
+      <Card icon="brush" headline="Renovation">
+        <Text onDarkBackground size={2}
+          >Reno Solutions streamlines renovation projects with efficient
+          planning, execution, and billing. Minimize vacancies and boost
+          portfolio performance with 360° tours and digital documentation.</Text
+        >
+      </Card>
+      <Card icon="building" headline="Capex">
+        <Text onDarkBackground size={2}>
+          CapEx Solutions empowers asset managers and developers with precise
+          five-year Capex planning and management. Optimize investments with
+          automated workflows and real-time financial control from start to
+          finish.
+        </Text>
+      </Card>
+      <Card icon="document" headline="Documents">
+        <Text onDarkBackground size={2}>
+          Our Content-Collaboration Platform boosts teamwork with secure,
+          centralized access to files, real-time collaboration, and efficient
+          organization. This ensures seamless workflows and maximum productivity
+          for all teams and partners.
+        </Text>
+      </Card>
+      <Card icon="zap" headline="Artifical Intelligence">
+        <Text onDarkBackground size={2}>
+          Query your data for insightful business decisions. Access top AI
+          models: Mistral, Llama, LocalMind, plus integrate ChatGPT, Claude, or
+          Gemini. All solutions are GDPR-compliant and available in our German
+          data center or on-premise.
+        </Text>
+      </Card>
+    </div>
+  </Stack>
+</div>
+
+<style>
+  #features {
+    padding-block-start: var(--space-m);
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-m);
+    place-items: center;
+    grid-auto-rows: 1fr;
+    padding-inline: 0.5rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
