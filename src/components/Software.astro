@@ -5,25 +5,28 @@ import Stack from "./generic/Stack.astro";
 import WithSidebar from "./generic/WithSidebar.astro";
 import softwareImage from "../assets/software-screenshot-1.png";
 import Text from "./generic/Text.astro";
+import { getLanguage } from "../i18n/getLanguage";
+import { useTranslations } from "../i18n/translate";
 
 type Props = {
   flipped?: boolean;
 };
+
+const lang = getLanguage(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <div id="software">
   <Stack>
-    <Headline centered level={2}>The Software</Headline>
+    <Headline centered level={2}>{t("software.headline")}</Headline>
     <WithSidebar>
       <div class="img-container">
         <Image alt="the software" src={softwareImage} />
       </div>
       <Stack>
-        <Headline level={3}>Reno-Tool</Headline>
+        <Headline level={3}>{t("software.reno")}</Headline>
         <Text size={2}>
-          Hier steht jetzt der absolute ober-scheiß über das Reno-Tool. Das Ding
-          ist SO geil, da kann man eigentlich gar nicht anders, als das zu
-          kaufen
+          {t("software.reno_text")}
         </Text>
       </Stack>
     </WithSidebar>
@@ -33,11 +36,9 @@ type Props = {
       </div>
       <Stack>
         <div class="spacer"></div>
-        <Headline level={3}>Capex-Tool</Headline>
+        <Headline level={3}>{t("software.capex")}</Headline>
         <Text size={2}>
-          Und hier steht jetzt, warum das Capex-Tool das absolut geilste ist,
-          was je erfunden wurde. Literally, das ding ist geiler als geschnitten
-          Brot.
+          {t("software.capex_text")}
         </Text>
       </Stack>
     </WithSidebar>
@@ -57,7 +58,7 @@ type Props = {
       --flip-modifier: -1;
 
       img {
-        animation-delay: 5s;
+        animation-delay: -3s;
       }
     }
   }

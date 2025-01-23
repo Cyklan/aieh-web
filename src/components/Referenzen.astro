@@ -1,0 +1,70 @@
+---
+import Headline from "./generic/Headline.astro";
+import Stack from "./generic/Stack.astro";
+import ReferenzSlide from "./ReferenzSlide.astro";
+import inhouse56 from "../assets/inhouse56.jpg";
+import inhouseLogo from "../assets/logo-inhouse.webp";
+import noratis from "../assets/noratis.jpg";
+import noratisLogo from "../assets/logo-noratis.png";
+import ReferenzSlideSelector from "./ReferenzSlideSelector.astro";
+---
+
+<div id="referenzen">
+  <Stack>
+    <Headline centered level={2}> Unsere Kunden </Headline>
+    <div class="slide-container">
+      <ReferenzSlide image={inhouse56} customerName="Inhouse56">
+        Hier steht jetzt, warum die uns voll geil finden. Lorem ipsum dolor sit
+        amet, consecetur und so weiter, keine Ahnung ich kann das nicht
+        auswendig.
+      </ReferenzSlide>
+      <ReferenzSlide image={noratis} customerName="Noratis">
+        Hier steht jetzt, warum uns Noratis so nice findet. Und dass wir Noratis
+        auch mögen oder so. Ich hab doch auch keine Ahnung.
+      </ReferenzSlide>
+    </div>
+
+    <div class="slide-selectors">
+      <ReferenzSlideSelector defaultChecked customerLogo={inhouseLogo} name="inhouse56" />
+      <ReferenzSlideSelector customerLogo={noratisLogo} name="noratis" />
+    </div>
+  </Stack>
+</div>
+
+<style>
+  #referenzen {
+    height: 100vh;
+    &:global(> .stack) {
+      height: 100%;
+    }
+  }
+  .slide-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
+    height: 70%;
+    gap: var(--space-xl);
+
+    &:global(:has(+.slide-selectors > :nth-child(2) input:checked)) {
+      > * {
+        transform: translateX(calc(-100% - var(--space-xl)));
+      }
+    }
+  }
+
+  .slide-selectors {
+    display: flex;
+    justify-content: center;
+
+    > :first-child {
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+      border-right: none;
+    }
+
+    > :last-child {
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+  }
+</style>

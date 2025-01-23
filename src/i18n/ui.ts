@@ -33,6 +33,13 @@ export const ui: Record<keyof typeof languages, { [key: string]: string }> = {
     "advantage.head_two": "KI-Expertise",
     "advantage.body_two":
       "Unsere KI-gestützte Plattform ermöglicht es Ihnen, mit verwertbaren Erkenntnissen, automatisierten Aufgaben und einem Wettbewerbsvorteil intelligentere Entscheidungen zu treffen.",
+    "software.headline": "Die Anwendungen",
+    "software.reno": "Reno-Tool",
+    "software.reno_text":
+      "Hier steht jetzt der absolute ober-scheiß über das Reno-Tool. Das Ding ist SO geil, da kann man eigentlich gar nicht anders, als das zu kaufen.",
+    "software.capex": "Capex-Tool",
+    "software.capex_text":
+      " Und hier steht jetzt, warum das Capex-Tool das absolut geilste ist, was je erfunden wurde. Literally, das ding ist geiler als geschnitten Brot.",
   },
   en: {
     "hero.headline": "Real Estate Analysis powered by AI",
@@ -61,5 +68,12 @@ export const ui: Record<keyof typeof languages, { [key: string]: string }> = {
     "advantage.head_two": "AI Expertise",
     "advantage.body_two":
       "Our AI-powered platform empowers you to make smarter decisions with actionable insights, automated tasks, and a competitive edge.",
+    "software.headline": "The Software",
+    "software.reno": "Reno-Tool",
+    "software.reno_text":
+      "Here we have the most amazing stuff we've ever read about reno-tool. Not buying it would be the most stupid thing ever done.",
+    "software.capex": "Capex-Tool",
+    "software.capex_text":
+      "We now lay out why Capex-Tool is the best thing since sliced bread. Nothing better has ever been invented.",
   },
 } as const;

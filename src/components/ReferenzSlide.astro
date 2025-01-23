@@ -1,0 +1,64 @@
+---
+import { Image } from "astro:assets";
+import Headline from "./generic/Headline.astro";
+import Text from "./generic/Text.astro";
+import WithSidebar from "./generic/WithSidebar.astro";
+import Stack from "./generic/Stack.astro";
+import Button from "./generic/Button.astro";
+
+type Props = {
+  customerName: string;
+  image: ImageMetadata;
+  children: any;
+};
+
+const { customerName, image } = Astro.props;
+---
+
+<div class="slide">
+  <div class="content">
+    <Stack split>
+      <Headline level={3} onDarkBackground>{customerName}</Headline>
+      <Text size={2} onDarkBackground>
+        <slot />
+      </Text>
+      <Stack>
+        <div class="product-list">
+          <Text onDarkBackground>
+            Produkte:
+            <br />
+            <Text onDarkBackground element="span" size={1}>Reno-Tool</Text>
+            <Text onDarkBackground element="span" size={1}>Capex-Tool</Text>
+          </Text>
+        </div>
+        <Button href="#">Click me</Button>
+      </Stack>
+    </Stack>
+  </div>
+  <Image src={image} alt={`${customerName} mag uns`} />
+</div>
+
+<style>
+  .slide {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 1120px;
+    background-color: var(--secondary-dark);
+    border-radius: 8px;
+    display: flex;
+    overflow: hidden;
+    gap: var(--space-xl);
+    transition: transform 0.3s ease-in-out;
+
+    .content {
+      flex: 1;
+      padding: var(--space-m);
+    }
+
+    img {
+      object-fit: cover;
+      flex: 1;
+      max-width: 50%;
+    }
+  }
+</style>

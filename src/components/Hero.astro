@@ -29,7 +29,9 @@ const { tagLine, buttonText, imageText } = Astro.props;
         <slot />
       </Headline>
       <Text onDarkBackground>{tagLine} </Text>
-      <Button variant="secondary" href="#" children={buttonText} />
+      <Button variant="secondary" href="#">
+        {buttonText}
+      </Button>
     </Stack>
     <div class="image-placeholder">
       <figure>

@@ -1,0 +1,60 @@
+---
+import { Image } from "astro:assets";
+
+type Props = {
+  name: string;
+  customerLogo: ImageMetadata;
+  defaultChecked?: boolean;
+};
+
+const { name, customerLogo, defaultChecked } = Astro.props;
+---
+
+<div class="slide-selector">
+  <input name="slides" id={name} checked={defaultChecked} hidden type="radio" />
+  <div class="selector-highlight"></div>
+  <label for={name}>
+    <Image src={customerLogo} alt={name} />
+  </label>
+</div>
+
+<style>
+  .slide-selector {
+    background-color: white;
+    border: 1px solid var(--accent);
+    position: relative;
+    overflow: hidden;
+
+    &:hover .selector-highlight {
+      opacity: 0.4;
+    }
+  }
+
+  .selector-highlight {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background-color: var(--primary);
+    opacity: 0;
+  }
+
+  input:checked + .selector-highlight {
+    opacity: 1 !important;
+  }
+
+  label {
+    display: block;
+    width: 120px;
+    height: 80px;
+    aspect-ratio: 4 / 3;
+    padding: 4px;
+
+    img {
+      object-fit: contain;
+      width: 100%;
+      height: 100%;
+    }
+  }
+</style>

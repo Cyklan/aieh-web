@@ -2,12 +2,13 @@
 type Props = {
   small?: boolean;
   large?: boolean;
+  split?: boolean;
 };
 
-const { small, large } = Astro.props;
+const { small, large, split} = Astro.props;
 ---
 
-<div class:list={["stack", { small, large }]}>
+<div class:list={["stack", { small, large, split }]}>
   <slot />
 </div>
 
@@ -22,5 +23,15 @@ const { small, large } = Astro.props;
 
   .stack.large > * + * {
     margin-block-start: 6rem;
+  }
+
+  .stack.split {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .stack.split > :last-child {
+    margin-block-start: auto;
   }
 </style>

@@ -13,11 +13,11 @@ const id = crypto.randomUUID();
 {
   href ? (
     <a href={href} id={id} class:list={["btn", variant]}>
-      {children}
+      <slot />
     </a>
   ) : (
     <button id={id} class:list={["btn", variant]}>
-      {children}
+      <slot />
     </button>
   )
 }
